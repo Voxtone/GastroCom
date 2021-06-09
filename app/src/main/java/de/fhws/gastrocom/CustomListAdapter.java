@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import de.fhws.gastrocom.action.Action;
+import de.fhws.gastrocom.network.Action;
 
 public class CustomListAdapter extends ArrayAdapter<Action> {
     private final Context context;

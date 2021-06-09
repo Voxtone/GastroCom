@@ -1,4 +1,4 @@
-package de.fhws.gastrocom.action;
+package de.fhws.gastrocom.network;
 
 import androidx.annotation.NonNull;
 

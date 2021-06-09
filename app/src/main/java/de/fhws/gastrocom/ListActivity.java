@@ -8,9 +8,9 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import de.fhws.gastrocom.action.Action;
-import de.fhws.gastrocom.action.ActionList;
-import de.fhws.gastrocom.action.Type;
+import de.fhws.gastrocom.network.Action;
+import de.fhws.gastrocom.network.ActionList;
+import de.fhws.gastrocom.network.Type;
 
 public class ListActivity extends AppCompatActivity {
 

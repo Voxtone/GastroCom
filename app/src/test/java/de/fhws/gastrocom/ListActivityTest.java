@@ -2,9 +2,9 @@ package de.fhws.gastrocom;
 
 import junit.framework.TestCase;
 
-import de.fhws.gastrocom.action.Action;
-import de.fhws.gastrocom.action.ActionList;
-import de.fhws.gastrocom.action.Type;
+import de.fhws.gastrocom.network.Action;
+import de.fhws.gastrocom.network.ActionList;
+import de.fhws.gastrocom.network.Type;
 
 public class ListActivityTest extends TestCase {
 
