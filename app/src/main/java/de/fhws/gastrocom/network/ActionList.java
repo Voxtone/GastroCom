@@ -23,6 +23,10 @@ public class ActionList implements Iterable<Action> {
         list.remove(action);
     }
 
+    public void removeAction(int index) {
+        list.remove(index);
+    }
+
     public Action get(int index) {
         return list.get(index);
     }
