@@ -17,16 +17,15 @@ import de.fhws.gastrocom.network.ActionList;
 import de.fhws.gastrocom.network.Client;
 import de.fhws.gastrocom.network.Type;
 
-// TODO: delete (action completed), pass (to another waiter)
 // TODO: proper http connection (Client class)
 // TODO: write JSON adapter, to convert JSONObject to Action object
-
+// TODO: three dots to call another waiter
 
 public class ListActivity extends AppCompatActivity {
 
     private static final String HOST = "192.168.178.5";
     private ListView dynamic;
-    private ActionList actions = new ActionList();
+    private final ActionList actions = new ActionList();
     private CustomListAdapter adapter;
     private Client client;
 
@@ -44,7 +43,6 @@ public class ListActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Aufgaben");
 
         dynamic = findViewById(R.id.dynamic);
 
@@ -83,7 +81,7 @@ public class ListActivity extends AppCompatActivity {
     private void onItemClicked(int position) {
 
         AlertDialog alertDialog = new AlertDialog.Builder(this)
-                .setTitle("Auftrag erledigt?")
+                .setTitle("Tisch " + actions.get(position).getTable() + ": " + actions.get(position).getType())
                 .setMessage("Auftrag erledigt?")
                 //.setIcon(R.drawable. no icon yet)
                 .setPositiveButton(R.string.done, (dialog, whichButton) -> {
@@ -94,6 +92,7 @@ public class ListActivity extends AppCompatActivity {
                 .setNeutralButton(R.string.pass, (dialog, whichButton) -> {
                     passAction(position);
                     toast("Passed");
+                    updateData();
                 }).show();
                 /*.setNegativeButton(R.string.dnf, (dialog, whichButton) -> {       // no negative button specified
                     updateData();
@@ -129,9 +128,19 @@ public class ListActivity extends AppCompatActivity {
 
 
     private void test() {
-        actions.addAction(new Action(1, Type.ORDER, 4, 3));
-        actions.addAction(new Action(2, Type.PAY, 5, 5));
-        actions.addAction(new Action(3, Type.ORDER, 3, 3));
+        actions.addAction(new Action(1, Type.ORDER, 5, 3));
+        actions.addAction(new Action(2, Type.PAY, 4, 5));
+        actions.addAction(new Action(4, Type.ORDER, 13, 3));
+        actions.addAction(new Action(5, Type.ORDER, 2, 3));
+        actions.addAction(new Action(6, Type.ORDER, 4, 1));
+        actions.addAction(new Action(7, Type.PAY, 5, 1));
+        actions.addAction(new Action(8, Type.ORDER, 6, 1));
+        actions.addAction(new Action(9, Type.ORDER, 8, 1));
+        actions.addAction(new Action(10, Type.PAY, 1, 4));
+        actions.addAction(new Action(11, Type.ORDER, 7, 1));
+        actions.addAction(new Action(12, Type.PAY, 8, 1));
+        actions.addAction(new Action(13, Type.ORDER, 3, 2));
+
     }
 
 

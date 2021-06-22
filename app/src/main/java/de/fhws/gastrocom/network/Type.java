@@ -3,7 +3,7 @@ package de.fhws.gastrocom.network;
 import androidx.annotation.NonNull;
 
 public enum Type {
-    ORDER("Bestellen"), PAY("Bezahlen");
+    ORDER("Bestellen \u2713"), PAY("Bezahlen €");
 
     private String text;
 
