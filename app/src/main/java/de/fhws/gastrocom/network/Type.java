@@ -16,4 +16,15 @@ public enum Type {
     public String toString() {
         return text;
     }
+
+    public static Type stringToType(String type) {
+        switch (type) {
+            case "bestellen":
+                return ORDER;
+            case "bezahlen":
+                return PAY;
+            default:
+                throw new IllegalArgumentException(type + " is not a valid Type!");
+        }
+    }
 }

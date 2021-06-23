@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 
 import de.fhws.gastrocom.network.Action;
@@ -23,22 +25,16 @@ import de.fhws.gastrocom.network.Type;
 
 public class ListActivity extends AppCompatActivity {
 
-    private static final String HOST = "192.168.178.5";
+    private static final String HOST = "http://localhost:50500/api/";
     private ListView dynamic;
     private final ActionList actions = new ActionList();
     private CustomListAdapter adapter;
-    private Client client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        try {
-            client = new Client(HOST);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -128,7 +124,7 @@ public class ListActivity extends AppCompatActivity {
 
 
     private void test() {
-        actions.addAction(new Action(1, Type.ORDER, 5, 3));
+        /*actions.addAction(new Action(1, Type.ORDER, 5, 3));
         actions.addAction(new Action(2, Type.PAY, 4, 5));
         actions.addAction(new Action(4, Type.ORDER, 13, 3));
         actions.addAction(new Action(5, Type.ORDER, 2, 3));
@@ -139,7 +135,17 @@ public class ListActivity extends AppCompatActivity {
         actions.addAction(new Action(10, Type.PAY, 1, 4));
         actions.addAction(new Action(11, Type.ORDER, 7, 1));
         actions.addAction(new Action(12, Type.PAY, 8, 1));
-        actions.addAction(new Action(13, Type.ORDER, 3, 2));
+        actions.addAction(new Action(13, Type.ORDER, 3, 2));*/
+
+
+        try {
+            actions.updateListFromJson( Client.readJsonFromUrl(HOST + "GET/action/*"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
     }
 

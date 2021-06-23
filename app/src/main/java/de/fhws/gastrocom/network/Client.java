@@ -1,52 +1,37 @@
 package de.fhws.gastrocom.network;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
+import java.io.Reader;
 import java.net.URL;
+import java.nio.charset.Charset;
 
 public class Client {
 
-    private HttpURLConnection connection;
-    private OutputStreamWriter os;
-    private BufferedReader is;
-
-    public Client(String url) throws IOException {
-        connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.setDoOutput(true);
-        connection.setDoInput(true);
-        os = new OutputStreamWriter(connection.getOutputStream());
-        is = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    private static String readAll(Reader rd) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        int cp;
+        while ((cp = rd.read()) != -1) {
+            sb.append((char) cp);
+        }
+        return sb.toString();
     }
 
-
-    /**
-     * sends a http post request to the server
-     * @param json json file which will be posted
-     * @throws IOException
-     */
-    public void write(JSONObject json) throws IOException {
-        connection.connect();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Accept", "application/json");
-        os.write(json.toString());
-        os.flush();
-    }
-
-    public JSONObject getRequest(String urlParams) throws IOException {
-        connection.connect();
-        connection.setRequestMethod("GET");
-        connection.setRequestProperty("Content-Type", "application/json");
-        os.write(urlParams);
-        os.flush();
-
-       //TODO make this shit work
-        return null;
+    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
+        InputStream is = new URL(url).openStream();
+        try {
+            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+            String jsonText = readAll(rd);
+            JSONObject json = new JSONObject(jsonText);
+            return json;
+        } finally {
+            is.close();
+        }
     }
 
 }

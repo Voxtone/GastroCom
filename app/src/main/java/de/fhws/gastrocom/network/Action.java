@@ -48,13 +48,5 @@ public class Action implements Comparable<Action>{
         return priority;
     }
 
-    /**
-     * creates a new Action, based on the given JSONObject
-     * @param json an JSONObject, which is the base of the created action
-     * @return a new Action, based on the given JSONObject
-     */
-    public static Action createActionFromJson(JSONObject json) {
-        // TODO: implement adapter function
-        return null;
-    }
+
 }
