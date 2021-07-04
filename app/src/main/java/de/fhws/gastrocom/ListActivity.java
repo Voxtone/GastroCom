@@ -38,7 +38,7 @@ public class ListActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         dynamic = findViewById(R.id.dynamic);
 
@@ -124,7 +124,8 @@ public class ListActivity extends AppCompatActivity {
 
 
     private void test() {
-        /*actions.addAction(new Action(1, Type.ORDER, 5, 3));
+        // Kellner 1
+        actions.addAction(new Action(1, Type.ORDER, 5, 3));
         actions.addAction(new Action(2, Type.PAY, 4, 5));
         actions.addAction(new Action(4, Type.ORDER, 13, 3));
         actions.addAction(new Action(5, Type.ORDER, 2, 3));
@@ -134,10 +135,21 @@ public class ListActivity extends AppCompatActivity {
         actions.addAction(new Action(9, Type.ORDER, 8, 1));
         actions.addAction(new Action(10, Type.PAY, 1, 4));
         actions.addAction(new Action(11, Type.ORDER, 7, 1));
-        actions.addAction(new Action(12, Type.PAY, 8, 1));
-        actions.addAction(new Action(13, Type.ORDER, 3, 2));*/
+        actions.addAction(new Action(12, Type.PAY, 9, 1));
+        actions.addAction(new Action(13, Type.ORDER, 3, 2));
+
+        //Kellner 2
+       /* actions.addAction(new Action(1, Type.PAY, 7, 3));
+        actions.addAction(new Action(2, Type.ORDER, 1, 5));
+        actions.addAction(new Action(4, Type.ORDER, 8, 3));
+        actions.addAction(new Action(5, Type.PAY, 1, 3));
+        actions.addAction(new Action(6, Type.ORDER, 5, 1));
+        actions.addAction(new Action(7, Type.PAY, 13, 1));
+        actions.addAction(new Action(8, Type.ORDER, 8, 1));
+        actions.addAction(new Action(9, Type.PAY, 8, 1));*/
 
 
+        /*
         try {
             actions.updateListFromJson( Client.readJsonFromUrl(HOST + "GET/action/*"));
         } catch (IOException e) {
@@ -145,7 +157,7 @@ public class ListActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        */
 
     }
 
